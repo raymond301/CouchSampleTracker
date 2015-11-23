@@ -1,0 +1,43 @@
+<h1>Listing mayo_submissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Plate</th>
+      <th>Well</th>
+      <th>Volume</th>
+      <th>Concentration</th>
+      <th>Lane number</th>
+      <th>Sequence index</th>
+      <th>Flowcell</th>
+      <th>Ngs protal batch</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mayo_submissions.each do |mayo_submission| %>
+      <tr>
+        <td><%= mayo_submission.sample %></td>
+        <td><%= mayo_submission.plate %></td>
+        <td><%= mayo_submission.well %></td>
+        <td><%= mayo_submission.volume %></td>
+        <td><%= mayo_submission.concentration %></td>
+        <td><%= mayo_submission.lane_number %></td>
+        <td><%= mayo_submission.sequence_index %></td>
+        <td><%= mayo_submission.flowcell %></td>
+        <td><%= mayo_submission.ngs_protal_batch %></td>
+        <td><%= link_to 'Show', mayo_submission %></td>
+        <td><%= link_to 'Edit', edit_mayo_submission_path(mayo_submission) %></td>
+        <td><%= link_to 'Destroy', mayo_submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mayo submission', new_mayo_submission_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Submitter:</strong>
+  <%= @bug_trax.submitter %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @bug_trax.url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bug_trax.description %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @bug_trax.level %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @bug_trax.tag %>
+</p>
+
+<%= link_to 'Edit', edit_bug_trax_path(@bug_trax) %> |
+<%= link_to 'Back', bug_traxes_path %>

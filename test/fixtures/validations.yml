@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sample_id: 
+  confirmation: false
+  reference_build: MyString
+  chr: MyString
+  pos: MyString
+  ref: MyString
+  alt: MyString
+  hgvs_c: MyString
+  hgvs_p: MyString
+  gene: MyString
+  transcript: MyString
+  exon: MyString
+  primer_forward: MyString
+  primer_reverse: MyString
+  pcr_size: 1
+  annealing_temp: 1.5
+  notes: MyString
+
+two:
+  sample_id: 
+  confirmation: false
+  reference_build: MyString
+  chr: MyString
+  pos: MyString
+  ref: MyString
+  alt: MyString
+  hgvs_c: MyString
+  hgvs_p: MyString
+  gene: MyString
+  transcript: MyString
+  exon: MyString
+  primer_forward: MyString
+  primer_reverse: MyString
+  pcr_size: 1
+  annealing_temp: 1.5
+  notes: MyString

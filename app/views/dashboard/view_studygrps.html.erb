@@ -1,0 +1,40 @@
+
+
+
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend>Study Groups </legend>
+            <div class="pull-right"> <%=link_to 'Edit', :action=>'edit_studygrps' %></div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Institution</th>
+                    <th>contact</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Notes</th>
+                    <th># of Samples</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @styGrps.each do |sa| %>
+                <tr>
+                    <td><%= sa.study_group %></td>
+                    <td><%= sa.institution %></td>
+                    <td><%= sa.contact %></td>
+                    <td><%= sa.contact_email %></td>
+                    <td><%= sa.contact_phone %></td>
+                    <td><%= sa.additional_details %></td>
+                    <td><%= sa.samples.size %></td>
+                </tr>
+                <% end %>
+
+                <tbody>
+            </table>
+        </div>
+    </div>
+    <fieldset>

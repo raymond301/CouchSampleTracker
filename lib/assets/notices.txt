@@ -1,0 +1,3 @@
+Date|Notification
+Nov. 22, 2015|Add ability to upload CARRIERS source manifest, Jenna's format.
+Nov. 18, 2015|Initialize cloud instance.

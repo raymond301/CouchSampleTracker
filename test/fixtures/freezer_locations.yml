@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sample_id: 
+  plate_barcode: MyString
+  box_type: MyString
+  box: MyString
+  tube_barcode: MyString
+  well: MyString
+  concentration: 1.5
+  last_access: 2015-11-06
+
+two:
+  sample_id: 
+  plate_barcode: MyString
+  box_type: MyString
+  box: MyString
+  tube_barcode: MyString
+  well: MyString
+  concentration: 1.5
+  last_access: 2015-11-06

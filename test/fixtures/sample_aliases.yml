@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sample_id: 
+  name: MyString
+  type: 
+
+two:
+  sample_id: 
+  name: MyString
+  type: 

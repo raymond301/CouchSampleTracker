@@ -1,0 +1,39 @@
+<h1>Listing samples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gender</th>
+      <th>Ethnicity</th>
+      <th>Cancer type</th>
+      <th>Tissue source</th>
+      <th>Case control</th>
+      <th>Species</th>
+      <th>Aliquot from</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @samples.each do |sample| %>
+      <tr>
+        <td><%= sample.gender %></td>
+        <td><%= sample.ethnicity %></td>
+        <td><%= sample.cancer_type %></td>
+        <td><%= sample.tissue_source %></td>
+        <td><%= sample.case_control %></td>
+        <td><%= sample.species %></td>
+        <td><%= sample.aliquot_from %></td>
+        <td><%= link_to 'Show', sample %></td>
+        <td><%= link_to 'Edit', edit_sample_path(sample) %></td>
+        <td><%= link_to 'Destroy', sample, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sample', new_sample_path %>

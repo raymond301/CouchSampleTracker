@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gender: MyString
+  ethnicity: MyString
+  cancer_type: MyString
+  tissue_source: MyString
+  case_control: MyString
+  species: MyString
+  aliquot_from: MyString
+
+two:
+  gender: MyString
+  ethnicity: MyString
+  cancer_type: MyString
+  tissue_source: MyString
+  case_control: MyString
+  species: MyString
+  aliquot_from: MyString

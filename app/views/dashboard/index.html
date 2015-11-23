@@ -1,0 +1,62 @@
+
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend>Project Summaries
+
+                <%= form_tag(dashboard_find_sample_path, :class=>'form-horizontal pull-right') do %>
+                <div class="form-group" >
+                    <div class="col-md-3 pull-right">
+                        <%= submit_tag "Sample", :class=>'btn btn-sm btn-info'%>
+                    </div>
+                    <div class="col-md-7 input-sm pull-right">
+                        <%= text_field_tag 'query'%>
+                    </div>
+                </div>
+                <% end %>
+
+            </legend>
+
+            <table class="table table-striped">
+                <colgroup>
+                    <col class="col-md-1">
+                    <col class="col-md-1">
+                    <col class="col-md-1">
+                    <col class="col-md-6" span="2">
+                </colgroup>
+            <thead>
+            <tr>
+                <th>Project</th>
+                <th>Total</th>
+                <th>Cases/Controls</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <% @currentProjects.each do |pjt| %>
+                <tr>
+                <td><%=link_to "#{pjt.id}:  #{pjt.name}", pjt%></td>
+                <td><%= pjt.total %> | <%= pjt.samples.size%></td>
+                <td><%= pjt.cases %> / <%= pjt.cntls %></td>
+                <td><%= pjt.purpose %></td>
+                    <td></td>
+                </tr>
+                <% end %>
+            <tr>
+                <%= form_for(Project.new, :method => :create) do |f|  %>
+                <td><%= f.text_field :name, {:size => 30, :value=>'New Name'}  %></td>
+                <td colspan="3"><%= f.text_field :purpose, {:size => 100, :value=>'Text Here'} %></td>
+                <td><%= f.submit "Create Project" %></td>
+                <% end %>
+            </tr>
+
+            <tbody>
+        </table>
+    </div>
+    </div>
+    <fieldset>
+
+        <div class="pull-right">Total Samples: <%=Sample.count%></div>
+

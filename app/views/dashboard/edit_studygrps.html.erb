@@ -1,0 +1,38 @@
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend>Study Groups <%#=@styGrps.size%></legend>
+
+
+            <!-- need to take form out of a HTML table, to get the form to work properly -->
+
+
+            <div class="row">
+                <div class="col-md-2 col-xs-2">Name</div>
+                <div class="col-md-2 col-xs-2">Institution</div>
+                <div class="col-md-2 col-xs-2">Contact</div>
+                <div class="col-md-2 col-xs-2">Email</div>
+                <div class="col-md-2 col-xs-2">Phone</div>
+                <div class="col-md-2 col-xs-2">Notes</div>
+            </div>
+
+            <% @styGrps.each do |sa| %>
+                <div class="row" style="margin-bottom:5px">
+                    <%= form_for sa, :url => url_for(:controller => 'dashboard', :action => 'updategrp') do |r| %>
+                        <%= r.hidden_field :id %>
+                        <div class="col-md-2 col-xs-2"><%= r.text_field :study_group %></div>
+                        <div class="col-md-2 col-xs-2"><%= r.text_field :institution %></div>
+                        <div class="col-md-2 col-xs-2"><%= r.text_field :contact %></div>
+                        <div class="col-md-2 col-xs-2"><%= r.text_field :contact_email %></div>
+                        <div class="col-md-2 col-xs-2"><%= r.text_field :contact_phone %></div>
+                        <div class="col-md-1 col-xs-1"><%= r.text_field :additional_details, size: 10 %></div>
+                        <div class="col-md-1 col-xs-1"><%= r.submit "Save" %></div>
+
+                    <% end %>
+                </div>
+            <% end %>
+
+        </div>
+    </div>
+    <fieldset>

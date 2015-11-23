@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sample_id: 
+  plate: MyString
+  well: MyString
+  volume: 1.5
+  concentration: 1.5
+  lane_number: 1
+  sequence_index: MyString
+  flowcell: MyString
+  ngs_protal_batch: MyString
+
+two:
+  sample_id: 
+  plate: MyString
+  well: MyString
+  volume: 1.5
+  concentration: 1.5
+  lane_number: 1
+  sequence_index: MyString
+  flowcell: MyString
+  ngs_protal_batch: MyString

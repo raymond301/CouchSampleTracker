@@ -1,0 +1,34 @@
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend> <h1><%=@project.name%></h1> </legend>
+            </br>
+
+
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Institution</th>
+                    <th>contact</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @project.samples.each do |s| %>
+                <tr>
+                    <td><%= s.failure %></td>
+                    <td><%= s.gender %></td>
+                    <td><%= s.species %></td>
+                </tr>
+                <% end %>
+
+                <tbody>
+            </table>
+
+
+
+        </div>
+    </div>
+</fieldset>

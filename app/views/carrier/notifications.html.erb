@@ -1,0 +1,16 @@
+<div class="container">
+    </br>
+
+<table class="table table-striped">
+    <% @notices.each_with_index do |l, idx| %>
+        <tr>
+            <% if idx == 0 %>
+                <th> <%= l.join("</th><th>").html_safe %> </th>
+            <% else %>
+                <td> <%= l.join("</td><td>").html_safe %> </td>
+        <% end %>
+        </tr>
+    <% end %>
+</table>
+
+    </div>

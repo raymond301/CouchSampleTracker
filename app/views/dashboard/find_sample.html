@@ -1,0 +1,30 @@
+
+
+
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend>Samples/Aliases</legend>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <!--<th>Other Names</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <% @aliases.each do |sa| %>
+                <tr>
+                    <td><%= sa.name %></td>
+                    <td><%= sa.typeCast %></td>
+                </tr>
+                <% end %>
+
+                <tbody>
+            </table>
+        </div>
+    </div>
+    <fieldset>

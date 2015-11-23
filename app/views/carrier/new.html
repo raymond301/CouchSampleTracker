@@ -1,0 +1,49 @@
+<div class="container">
+    </br>
+    <h3>Upload Source Manifest</h3>
+    <%= form_tag('create_source', :multipart => true) do %>
+
+    <table class="table">
+        <tr>
+            <td>Type of Study:</td>
+            <td><%= select_tag 'studytype', options_for_select(['Case Control','Family']), :class => 'input' %></td>
+        </tr>
+        <tr>
+            <td>Site of Origin:</td>
+            <td><%= select_tag 'origin', options_for_select(['Mayo Clinic','University of Penn', 'That One Lab']), :class => 'input' %></td>
+        </tr>
+        <tr>
+            <td>Manifest File: (*.xlsx format)</td>
+            <td><%= file_field_tag 'manifest', style: 'color:white;width:450px' %></td>
+        </tr>
+        <tr>
+            <td>CAST Barcode: <small>(Carriers Stock Plate)</small></td>
+            <td><%= text_field_tag('cast_barcode', '', :size => '50', :class => 'textarea') %></td>
+        </tr>
+    </table>
+    <%= submit_tag "Upload", :class=>'btn btn-info pull-right'%>
+    <% end %>
+
+    </br>
+    </br>
+    <hr>
+    </br>
+    <h3>Upload Submission Manifest</h3>
+    <%= form_tag('create_submission', :multipart => true) do %>
+
+    <table class="table">
+        <tr>
+            <td>Manifest File:  (*.xlsx format)</td>
+            <td><%= file_field_tag 'manifest', style: 'color:white;width:450px' %></td>
+        </tr>
+        <tr>
+            <td>CAST Barcode: <small>(Carriers Stock Plate)</small></td>
+            <td><%= text_field_tag('cast_barcode', '', :size => '50', :class => 'textarea') %></td>
+        </tr>                           s
+    </table>
+    </br>
+
+    <%= submit_tag "Upload", :class=>'btn btn-info pull-right'%>
+    <% end %>
+
+</div>

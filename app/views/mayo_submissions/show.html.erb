@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sample:</strong>
+  <%= @mayo_submission.sample %>
+</p>
+
+<p>
+  <strong>Plate:</strong>
+  <%= @mayo_submission.plate %>
+</p>
+
+<p>
+  <strong>Well:</strong>
+  <%= @mayo_submission.well %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @mayo_submission.volume %>
+</p>
+
+<p>
+  <strong>Concentration:</strong>
+  <%= @mayo_submission.concentration %>
+</p>
+
+<p>
+  <strong>Lane number:</strong>
+  <%= @mayo_submission.lane_number %>
+</p>
+
+<p>
+  <strong>Sequence index:</strong>
+  <%= @mayo_submission.sequence_index %>
+</p>
+
+<p>
+  <strong>Flowcell:</strong>
+  <%= @mayo_submission.flowcell %>
+</p>
+
+<p>
+  <strong>Ngs protal batch:</strong>
+  <%= @mayo_submission.ngs_protal_batch %>
+</p>
+
+<%= link_to 'Edit', edit_mayo_submission_path(@mayo_submission) %> |
+<%= link_to 'Back', mayo_submissions_path %>

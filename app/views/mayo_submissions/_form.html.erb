@@ -1,0 +1,53 @@
+<%= form_for(@mayo_submission) do |f| %>
+  <% if @mayo_submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mayo_submission.errors.count, "error") %> prohibited this mayo_submission from being saved:</h2>
+
+      <ul>
+      <% @mayo_submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sample %><br>
+    <%= f.text_field :sample %>
+  </div>
+  <div class="field">
+    <%= f.label :plate %><br>
+    <%= f.text_field :plate %>
+  </div>
+  <div class="field">
+    <%= f.label :well %><br>
+    <%= f.text_field :well %>
+  </div>
+  <div class="field">
+    <%= f.label :volume %><br>
+    <%= f.text_field :volume %>
+  </div>
+  <div class="field">
+    <%= f.label :concentration %><br>
+    <%= f.text_field :concentration %>
+  </div>
+  <div class="field">
+    <%= f.label :lane_number %><br>
+    <%= f.number_field :lane_number %>
+  </div>
+  <div class="field">
+    <%= f.label :sequence_index %><br>
+    <%= f.text_field :sequence_index %>
+  </div>
+  <div class="field">
+    <%= f.label :flowcell %><br>
+    <%= f.text_field :flowcell %>
+  </div>
+  <div class="field">
+    <%= f.label :ngs_protal_batch %><br>
+    <%= f.text_field :ngs_protal_batch %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

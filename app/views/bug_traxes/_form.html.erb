@@ -1,0 +1,38 @@
+
+<%= form_for(@bug_trax) do |f| %>
+  <% if @bug_trax.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bug_trax.errors.count, "error") %> prohibited this bug_trax from being saved:</h2>
+
+      <ul>
+      <% @bug_trax.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :submitter %><br>
+    <%= f.text_field :submitter, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url, size: 40, :readonly => true%>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, size: "80x10" %>
+  </div>
+  <div class="field">
+    <%= f.label :level %><br>
+    <%= f.select :level, $LVL %>
+  </div>
+  <div class="field">
+    <%= f.label :tag %><br>
+    <%= f.text_field :tag, size: 40 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

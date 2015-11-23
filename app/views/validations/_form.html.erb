@@ -1,0 +1,85 @@
+<%= form_for(@validation) do |f| %>
+  <% if @validation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@validation.errors.count, "error") %> prohibited this validation from being saved:</h2>
+
+      <ul>
+      <% @validation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sample %><br>
+    <%= f.text_field :sample %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmation %><br>
+    <%= f.check_box :confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :reference_build %><br>
+    <%= f.text_field :reference_build %>
+  </div>
+  <div class="field">
+    <%= f.label :chr %><br>
+    <%= f.text_field :chr %>
+  </div>
+  <div class="field">
+    <%= f.label :pos %><br>
+    <%= f.text_field :pos %>
+  </div>
+  <div class="field">
+    <%= f.label :ref %><br>
+    <%= f.text_field :ref %>
+  </div>
+  <div class="field">
+    <%= f.label :alt %><br>
+    <%= f.text_field :alt %>
+  </div>
+  <div class="field">
+    <%= f.label :hgvs_c %><br>
+    <%= f.text_field :hgvs_c %>
+  </div>
+  <div class="field">
+    <%= f.label :hgvs_p %><br>
+    <%= f.text_field :hgvs_p %>
+  </div>
+  <div class="field">
+    <%= f.label :gene %><br>
+    <%= f.text_field :gene %>
+  </div>
+  <div class="field">
+    <%= f.label :transcript %><br>
+    <%= f.text_field :transcript %>
+  </div>
+  <div class="field">
+    <%= f.label :exon %><br>
+    <%= f.text_field :exon %>
+  </div>
+  <div class="field">
+    <%= f.label :primer_forward %><br>
+    <%= f.text_field :primer_forward %>
+  </div>
+  <div class="field">
+    <%= f.label :primer_reverse %><br>
+    <%= f.text_field :primer_reverse %>
+  </div>
+  <div class="field">
+    <%= f.label :pcr_size %><br>
+    <%= f.number_field :pcr_size %>
+  </div>
+  <div class="field">
+    <%= f.label :annealing_temp %><br>
+    <%= f.text_field :annealing_temp %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sample_id: 
+  demographic_glob_header_id: 
+  delim_text: MyString
+
+two:
+  sample_id: 
+  demographic_glob_header_id: 
+  delim_text: MyString

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sample_id: 
+  delim_text: MyString
+
+two:
+  sample_id: 
+  delim_text: MyString

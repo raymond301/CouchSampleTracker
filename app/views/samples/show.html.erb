@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @sample.gender %>
+</p>
+
+<p>
+  <strong>Ethnicity:</strong>
+  <%= @sample.ethnicity %>
+</p>
+
+<p>
+  <strong>Cancer type:</strong>
+  <%= @sample.cancer_type %>
+</p>
+
+<p>
+  <strong>Tissue source:</strong>
+  <%= @sample.tissue_source %>
+</p>
+
+<p>
+  <strong>Case control:</strong>
+  <%= @sample.case_control %>
+</p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @sample.species %>
+</p>
+
+<p>
+  <strong>Aliquot from:</strong>
+  <%= @sample.aliquot_from %>
+</p>
+
+<%= link_to 'Edit', edit_sample_path(@sample) %> |
+<%= link_to 'Back', samples_path %>
