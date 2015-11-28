@@ -5,8 +5,9 @@ class DashboardController < ApplicationController
   end
 
   def find_sample
-#    @aliases=SampleAliase.all.where(:name=>params['query'])
-    @aliases=SampleAliase.all.where("name like ?", "%#{params['query']}%")
+    @q=params['query']
+    @samps=SampleAliase.allSamplesInQuery( params['query'] )
+    @samps[0].primeName
   end
 
   def search_sample

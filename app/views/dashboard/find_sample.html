@@ -16,10 +16,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% @aliases.each do |sa| %>
+                <% @samps.each do |s| %>
+                <% pn = s.primeName %>
                 <tr>
-                    <td><%= sa.name %></td>
-                    <td><%= sa.typeCast %></td>
+                    <td><%= link_to pn.name, :controller => 'samples', :action => 'show', :id => s.id %> <em>[<%= s.primeName.typeCast %>]</em> </td>
+                    <td><%= s.listNames %></td>
                 </tr>
                 <% end %>
 
