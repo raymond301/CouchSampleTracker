@@ -20,7 +20,7 @@
                 <% pn = s.primeName %>
                 <tr>
                     <td><%= link_to pn.name, :controller => 'samples', :action => 'show', :id => s.id %> <em>[<%= s.primeName.typeCast %>]</em> </td>
-                    <td><%= s.listNames %></td>
+                    <td><%= modText(s.allNames, @q) %></td>
                 </tr>
                 <% end %>
 

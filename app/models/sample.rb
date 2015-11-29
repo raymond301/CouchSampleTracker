@@ -8,8 +8,8 @@ class Sample < ActiveRecord::Base
      SampleAliase.where(['sample_id = ? AND top = ?', self.id, true]).first
   end
 
-  def listNames
-    SampleAliase.where(['sample_id = ?', self.id]).map{|s| s.name}.join(", ")
+  def allNames
+    SampleAliase.where(['sample_id = ?', self.id]).map{|s| s.name}
   end
 
 end
