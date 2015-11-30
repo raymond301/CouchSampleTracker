@@ -3,24 +3,47 @@
         <div class="col-xs-2 col-md-1"></div>
         <div class="col-xs-12 col-md-10">
             <legend> <h1><%=@project.name%></h1> </legend>
+
+            <div class="row">
+                <div class="col-md-2"> <strong>Total</strong> : <%= @allSamples.size %> </div>
+                <div class="col-md-2"> <strong>Available</strong> : <%= @allSamples.select{|s| !s.failure }.size %> </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"> <%= @grpCnts.map { |k, v| k+": "+v.to_s }.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").html_safe %> </div>
+            </div>
+
             </br>
-
-
 
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
-                    <th>Institution</th>
-                    <th>contact</th>
+                    <th>Study Group</th>
+                    <th>Cancer</th>
+                    <th>Species</th>
+                    <th>Ethnicity</th>
+                    <th>Gender</th>
+                    <th>Tissue</th>
                 </tr>
                 </thead>
                 <tbody>
-                <% @project.samples.each do |s| %>
+                <% @allSamples.each do |s| %>
                 <tr>
-                    <td><%= s.failure %></td>
-                    <td><%= s.gender %></td>
+                    <td>
+                        <% if s.failure %>
+                            <%= image_tag "bad.png"%>
+                        <% else %>
+                            <%= image_tag "good.png"%>
+                        <% end %>
+                    </td>
+                    <td><%= link_to s.primeName.name, :controller => 'samples', :action => 'show', :id => s.id %></td>
+                    <td><%= s.site_of_origin.study_group %></td>
+                    <td><%= s.cancer_type %></td>
                     <td><%= s.species %></td>
+                    <td><%= s.ethnicity %></td>
+                    <td><%= s.gender %></td>
+                    <td><%= s.tissue_source %></td>
                 </tr>
                 <% end %>
 

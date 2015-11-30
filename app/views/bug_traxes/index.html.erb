@@ -1,35 +1,43 @@
-<h1>Listing bug_traxes</h1>
 
-<table>
+
+
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend>Issues / Bugs</legend>
+
+            <div class="orangeTable" >
+
+            <table>
   <thead>
     <tr>
       <th>Submitter</th>
-      <th>Url</th>
-      <th>Description</th>
-      <th>Level</th>
-      <th>Tag</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+      <th colspan="5">Description</th>
   </thead>
 
   <tbody>
     <% @bug_traxes.each do |bug_trax| %>
       <tr>
         <td><%= bug_trax.submitter %></td>
-        <td><%= bug_trax.url %></td>
-        <td><%= bug_trax.description %></td>
-        <td><%= bug_trax.level %></td>
-        <td><%= bug_trax.tag %></td>
-        <td><%= link_to 'Show', bug_trax %></td>
-        <td><%= link_to 'Edit', edit_bug_trax_path(bug_trax) %></td>
-        <td><%= link_to 'Destroy', bug_trax, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td colspan="5"><%= bug_trax.description %></td>
+
+      </tr>
+      <tr>
+          <td><%= bug_trax.level %></td>
+          <td><%= bug_trax.url %></td>
+          <td><%= bug_trax.tag %></td>
+          <td><%= link_to 'Show', bug_trax, :style=>"color:blue;" %></td>
+          <td><%= link_to 'Edit', edit_bug_trax_path(bug_trax), :style=>"color:blue;" %></td>
+          <td><%= link_to 'Destroy', bug_trax, method: :delete, data: { confirm: 'Are you sure?' }, :style=>"color:blue;" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+            </div>
 <br>
 
 <%= link_to 'New Bug trax', new_bug_trax_path %>
+
+            </div>
+        </div>

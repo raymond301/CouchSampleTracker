@@ -2,6 +2,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, :only=> [:show, :edit, :update, :destroy]
 
     def show
+      @allSamples = @project.samples
+      h = @allSamples.group(:site_of_origin_id).count
+      @grpCnts = Hash[h.map { |k, v| [ SiteOfOrigin.find(k).study_group, v] }]
+
+      #raise @grpCnts.inspect
     end
 
     # GET /projects/new
