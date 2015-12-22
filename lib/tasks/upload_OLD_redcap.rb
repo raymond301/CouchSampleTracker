@@ -2,12 +2,11 @@ require 'pp'
 
 dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap2.csv')
 
-#allStudyGroups=SiteOfOrigin.all.group_by(&:study_group).map(&:first)
+allStudyGroups=SiteOfOrigin.all.group_by(&:study_group) #.map(&:first)
+genderSource={'1'=>'Male','2'=>'Female','99'=>'Unknown'}
 
-#    pp allStudyGroups
-
+#pp allStudyGroups
 #exit
-
 
 
 @header = Array.new
@@ -55,28 +54,43 @@ if File.exist?(dbFile)
       exit
     end
 
-    if sampList.empty?
-      raise ['Need to handle new smaple creation'].inspect
-    end
+    if !sampList.empty?
+      ### Grab or create the sample
+      s=Sample.find(sampList[0])
 
-    ### Grab or create the sample
-    s=Sample.find(sampList[0])
-
-    if ! s.nil?
-      for i in 1..6
-        if missingAlias[i]
-          SampleAliase.create({sample:s,name:rr[i],typeCast:@header[i].camelize })
+      if ! s.nil?
+        for i in 1..6
+          if missingAlias[i]
+            SampleAliase.create({sample:s,name:rr[i],typeCast:@header[i].camelize })
+          end
         end
+
+        # check ethnicity
+        ### if stored ethnicity is UNK -- overwrite with old known content
+        if s.ethnicity == "UNK" && ! rr[13].empty?
+          s.ethnicity = rr[13]
+        end
+        next  ## no need to coninue on existing samples.
       end
-
-
-      # check ethnicity
-      if s.ethnicity == "UNK" && ! rr[13].empty?
-        s.ethnicity = rr[13]
-      end
-
-      next
     end
+
+
+      ## Standardize Speciess
+      sps = rr[hDx('species')].capitalize ||= 'Human'
+      if sps =~ /^Homo/
+        sps = 'Human'
+      end
+
+      s=Sample.create({gender:genderSource[ rr[hDx('gender')] ],ethnicity:rr[hDx('ethnicity')],cancer_type:rr[hDx('cancer_type')],
+          tissue_source:rr[hDx('tissue_source')],case_control:rr[hDx('case_control')],species:sps})
+
+
+     ## Find or Create a study group / site of origin
+     if allStudyGroups[rr[hDx('study_group')]].size == 1
+       s.site_of_origin = allStudyGroups[rr[hDx('study_group')]].first
+     else
+       raise [rr[hDx('study_group')], allStudyGroups[rr[hDx('study_group')]].size ].inspect
+     end
 
 
 
@@ -87,17 +101,8 @@ if File.exist?(dbFile)
 
 
 
-    ##pp [idx, rr[2], ally, ally.sample ]
-
-
-    ### if stored ethnicity is UNK -- overwrite with old known content
-
-
-
-
     s.save!
-  break if idx > 10
-
+  break if idx > 330
 
   end
 else

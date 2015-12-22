@@ -35,7 +35,7 @@ if File.exist?(dbFile)
 
     ## Standardize Speciess
     sps = rr[hDx('species')].capitalize ||= 'Human'
-    if sps =~ /Homo Sap/
+    if sps =~ /^Homo/
       sps = 'Human'
     end
 
