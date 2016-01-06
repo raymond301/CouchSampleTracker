@@ -1,39 +1,169 @@
+<div class="container">
+<div class="row">
+
 <p id="notice"><%= notice %></p>
+<h1>Sample: <%= @sample.primeName.name %> </h1>
+    <em>ID Type: [<%= @sample.primeName.typeCast %>]</em></br></br>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @sample.gender %>
-</p>
+    <p>
+        <strong>Study Group : </strong>
+        <%= @sample.site_of_origin.study_group %>
+    </p>
 
-<p>
-  <strong>Ethnicity:</strong>
-  <%= @sample.ethnicity %>
-</p>
+    <div class="row">
+        <div class="col-md-4">
+            <strong>Gender : </strong>
+            <%= @sample.gender %>
+        </div>
+        <div class="col-md-4">
+            <strong>Ethnicity : </strong>
+            <%= @sample.ethnicity %>
+        </div>
+        <div class="col-md-4">
+            <strong>Case/Control : </strong>
+            <%= @sample.case_control %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <strong>Cancer type : </strong>
+            <%= @sample.cancer_type %>
+        </div>
+        <div class="col-md-4">
+            <strong>Tissue source : </strong>
+            <%= @sample.tissue_source %>
+        </div>
+        <div class="col-md-4">
+            <strong>Species : </strong>
+            <%= @sample.species %>
+        </div>
+    </div>
 
-<p>
-  <strong>Cancer type:</strong>
-  <%= @sample.cancer_type %>
-</p>
+    </hr> </br>
 
-<p>
-  <strong>Tissue source:</strong>
-  <%= @sample.tissue_source %>
-</p>
 
-<p>
-  <strong>Case control:</strong>
-  <%= @sample.case_control %>
-</p>
 
-<p>
-  <strong>Species:</strong>
-  <%= @sample.species %>
-</p>
+    <p>
+        <strong>Other Alias Names : </strong>
+        <table>
+            <% @sample.allNameObjts.each do |t| %>
+            <tr>
+                <th><%= t.typeCast %> : </th>
+                <td> <%= t.name %></td>
+            </tr>
+            <% end %>
+            </table>
+    </p>
 
-<p>
-  <strong>Aliquot from:</strong>
-  <%= @sample.aliquot_from %>
-</p>
+    <p>
+        <strong>Project(s) : </strong>
+        <%= @sample.projects.map{|p| link_to p.name, p}.join(" , ").html_safe %>
+    </p>
+
+    </hr> </br>
+
+    <p>
+        <h3>Plates &amp; Locations : </h3>
+    <table class="table table-striped">
+        <tr>
+            <th>process_step</th>
+            <th>plate_type</th>
+            <th>plate_name</th>
+            <th>box_type</th>
+            <th>box</th>
+            <th>well</th>
+            <th>rack</th>
+            <th>volume</th>
+            <th>concentration_method</th>
+            <th>concentration</th>
+            <th>dna_quality</th>
+            <th>notes</th>
+            <th>Log Date</th>
+        </tr>
+        <% @sample.freezer_locations.each do |t| %>
+            <tr>
+                <td> <%= t.process_step %></td>
+                <td> <%= t.plate_type %></td>
+                <td> <%= t.plate_name %></td>
+                <td> <%= t.box_type %></td>
+                <td> <%= t.box %></td>
+                <td> <%= t.well %></td>
+                <td> <%= t.rack %></td>
+                <td> <%= t.volume %></td>
+                <td> <%= t.concentration_method %></td>
+                <td> <%= t.concentration %></td>
+                <td> <%= t.dna_quality %></td>
+                <td> <%= t.notes %></td>
+                <td> <%= t.created_at %></td>
+            </tr>
+        <% end %>
+    </table>
+    </p>
+
+
+    <p>
+        <h3>NGS Sequence Tracking : </h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Date</th>
+            <th>ngs_protal_batch</th>
+            <th>flowcell</th>
+            <th>lane_number</th>
+            <th>sequence_index</th>
+        </tr>
+        <% @sample.mayo_submissions.each do |t| %>
+            <tr>
+                <td> <%= t.created_at %></td>
+                <td> <%= t.ngs_protal_batch %></td>
+                <td> <%= t.flowcell %></td>
+                <td> <%= t.lane_number %></td>
+                <td> <%= t.sequence_index %></td>
+            </tr>
+        <% end %>
+    </table>
+    <ul>
+        <% @sample.file_locations.each do |t| %>
+            <li>[<%=t.typeCast%>] <%=t.location%></li>
+        <%end%>
+    </ul>
+    </p>
+
+
+    <p>
+        <h3>Queriable Phenotype Information : </h3>
+    <table class="table table-striped">
+        <% @sample.demographic_informations.each do |t| %>
+            <tr>
+                <th><%= t.title %> : </th>
+                <td> <%= t.value %></td>
+            </tr>
+        <% end %>
+    </table>
+    </p>
+
+
+    <p>
+    <h3>Read Only Phenotype Information : </h3>
+    <table class="table table-striped">
+        <%# @sample.demographic_informations.each do |t| %>
+            <tr>
+                <th><%#= t.title %> : </th>
+                <td> <%#= t.value %></td>
+            </tr>
+        <%# end %>
+    </table>
+    </p>
+
+    <%#raise @sample..inspect%>
+
+
+</div>
+</div>
 
 <%= link_to 'Edit', edit_sample_path(@sample) %> |
 <%= link_to 'Back', samples_path %>
+
+<p>
+    <strong>Aliquot from:</strong>
+    <%#=link_to @sample.aliquot_from %>
+</p>

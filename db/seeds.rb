@@ -8,7 +8,7 @@
 
 Project.create([{name:'Simplexo Custom Capture',short:'simplexocc',total:2446,cases:2180,cntls:265,purpose:'City of Hope, MSKCC, Stanford, UPENN'},
     {name:'TNBC Custom Capture',short:'tnbc_cc',total:2640,cases:1824,cntls:816,purpose:'Mayo Pooled Samples, Demokratos, Ambry?'},
-    {name:'CIMBA Whole Genome',short:'cimba',total:101,cases:0,cntls:0,purpose:''},
+    {name:'CIMBA Whole Genome',short:'cimba',total:101,cases:0,cntls:0,purpose:'Consortium for Modifiers of BRCA1/2'},
     {name:'Pancreas Exomes',short:'pan_ex',total:120,cases:0,cntls:0,purpose:'PANIN'},
     {name:'Simplexo Exomes',short:'simplexo_ex',total:247,cases:0,cntls:0,purpose:'Mayo Familial Breast Cancer & UPENN'},
     {name:'Pancreas SPORE mRNA',short:'pan_rna',total:68,cases:0,cntls:0,purpose:'mRNA expression'},
@@ -19,7 +19,7 @@ Project.create([{name:'Simplexo Custom Capture',short:'simplexocc',total:2446,ca
     {name:'Pancreas SPORE CC',short:'pan_cc',total:96,cases:0,cntls:96,purpose:'McWilliams (Collab.), Simplexo CC Kit'},
     {name:'COH DataSharing',short:'coh_ds',total:360,cases:0,cntls:0,purpose:'Converted from Varscan'},
     {name:'BreastCancerFamilyRegistry',short:'bcfr',total:86,cases:0,cntls:0,purpose:'New York, Fox Chase Cancer Center'},
-    {name:'Ovarian PDX',short:'ov_pdx',total:0,cases:0,cntls:0,purpose:''},
+    {name:'Ovarian PDX',short:'ov_pdx',total:0,cases:0,cntls:0,purpose:'Ovarian Xenographs from Clinical Trial'},
     #{name:'FFPE',short:'ffpe',total:0,cases:0,cntls:0,purpose:'mRNA expression'},
     {name:'CARRIERS',short:'carrier',total:0,cases:0,cntls:0,purpose:'HiPlex, 28 Gene Panel'}
 ])
