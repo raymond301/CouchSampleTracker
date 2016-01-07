@@ -10,7 +10,7 @@ Project.create([{name:'Simplexo Custom Capture',short:'simplexocc',total:2446,ca
     {name:'TNBC Custom Capture',short:'tnbc_cc',total:2640,cases:1824,cntls:816,purpose:'Mayo Pooled Samples, Demokratos, Ambry?'},
     {name:'CIMBA Whole Genome',short:'cimba',total:101,cases:0,cntls:0,purpose:'Consortium for Modifiers of BRCA1/2'},
     {name:'Pancreas Exomes',short:'pan_ex',total:120,cases:0,cntls:0,purpose:'PANIN'},
-    {name:'Simplexo Exomes',short:'simplexo_ex',total:247,cases:0,cntls:0,purpose:'Mayo Familial Breast Cancer & UPENN'},
+    {name:'Simplexo Exomes',short:'simplexo_ex',total:404,cases:0,cntls:0,purpose:'Mayo Familial Breast Cancer & UPENN'},
     {name:'Pancreas SPORE mRNA',short:'pan_rna',total:68,cases:0,cntls:0,purpose:'mRNA expression'},
     {name:'Demokritos',short:'demok',total:326,cases:272,cntls:0,purpose:'Connection to TNBC Group, 24 samples < 1M reads'},
     {name:'Pancreas PDX',short:'pan_pdx',total:15,cases:13,cntls:0,purpose:'SPORE xenographs, Tumors'},
