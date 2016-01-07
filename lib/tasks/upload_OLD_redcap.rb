@@ -1,6 +1,7 @@
 require 'pp'
 
-dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap2.csv')
+#dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap2.csv')
+dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap.csv')
 
 allStudyGroups=SiteOfOrigin.all.group_by(&:study_group) #.map(&:first)
 genderSource={'1'=>'Male','2'=>'Female','99'=>'Unknown'}
@@ -15,6 +16,7 @@ newRedCapPrjtMap={'project_id___1'=>'simplexocc','project_id___2'=>'demok','proj
 
 #pp allStudyGroups
 #exit
+###### need to fix up plate_barcode in old to fit in either source or submission plate
 
 
 @header = Array.new
@@ -132,19 +134,20 @@ if File.exist?(dbFile)
 
 
     # add additional phenotypic data
-    for i in [9,10,11,12,16,17,18,34,35]
-      if ! rr[i].empty?
+    for i in [8,9,10,11,15,16,17,33,34]
+      if !rr[i].empty?
         DemographicInformation.create(sample:s,title:@header[i].camelize,value:rr[i])
       end
     end
 
 
     ######## Mapp to projects ##########
-    for i in 19..31
+    for i in 18..31
       if rr[i] == "1"
         sh=newRedCapPrjtMap[@header[i]]
         @pjts[sh][0].samples << s
         @pjts[sh][0].save!
+       # pp [i, sh, @pjts[sh]]
       end
     end
 
@@ -162,12 +165,61 @@ if File.exist?(dbFile)
 
 
 
-    pp [idx, s, s.site_of_origin]
+    ###### Grab file locations where available  ########
+    if ! rr[hDx('bam_local')].empty?
+      FileLocation.create(sample:s,typeCast:'Local Bam',location:rr[hDx('bam_local')])
+    end
+    if ! rr[hDx('bam_remote')].empty?
+      FileLocation.create(sample:s,typeCast:'FTP Bam',location:rr[hDx('bam_remote')])
+    end
+    if ! rr[hDx('vcf_local')].empty?
+      FileLocation.create(sample:s,typeCast:'Local VCF',location:rr[hDx('vcf_local')])
+    end
+    if ! rr[hDx('vcf_remote')].empty?
+      FileLocation.create(sample:s,typeCast:'FTP VCF',location:rr[hDx('vcf_remote')])
+    end
+    if ! rr[hDx('gvcf_local')].empty?
+      FileLocation.create(sample:s,typeCast:'Local gVCF',location:rr[hDx('gvcf_local')])
+    end
+    if ! rr[hDx('gvcf_remote')].empty?
+      FileLocation.create(sample:s,typeCast:'FTP gVCF',location:rr[hDx('gvcf_remote')])
+    end
+
+
+
+
+    # ### submission plate and ngs bic data
+    ngsStr = rr[42..45].join('')
+    if !ngsStr.empty?
+      sm = MayoSubmission.create(sample:s)
+      if ! rr[hDx('lane_num')].empty? then sm.lane_number = rr[hDx('lane_num')] end
+      if ! rr[hDx('sequence_index')].empty? then sm.sequence_index = rr[hDx('sequence_index')] end
+      if ! rr[hDx('flowcell')].empty? then sm.flowcell = rr[hDx('flowcell')] end
+      if ! rr[hDx('ngs_protal_batch')].empty? then sm.ngs_protal_batch = rr[hDx('ngs_protal_batch')] end
+      sm.save!
+    end
+
+
+    #### first, source location
+    if ! rr[hDx('source_plate')].empty?
+      FreezerLocation.create(sample:s,plate_name:rr[hDx('source_plate')],plate_type:'Source Plate',process_step:"Source",well:rr[hDx('source_well')] )
+    end
+    if ! rr[hDx('submission_plate')].empty?
+      FreezerLocation.create(sample:s,plate_name:rr[hDx('submission_plate')],plate_type:'Submission Plate',process_step:"Submission",well:rr[hDx('well')] )
+    end
+
+    # pp [idx, s, s.site_of_origin]
 
 
 
     s.save!
-  break if idx > 10
+ # break if idx > 10
+    if idx % 100 == 0
+      print " . "
+    end
+    if idx % 1000 == 0
+      puts " * "
+    end
 
   end
 else

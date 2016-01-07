@@ -164,7 +164,7 @@ if File.exist?(dbFile)
 
 
     #### second, submission location
-    if ! rr[hDx('source_plate')].empty?
+    if ! rr[hDx('submission_plate')].empty?
       lf2=FreezerLocation.create(sample:s,plate_name:rr[hDx('submission_plate')],plate_type:'Submission Plate',process_step:"Submission",
           well:rr[hDx('submission_well')],volume:rr[hDx('submission_vol')],concentration:rr[hDx('submission_conc')])
       if ! rr[hDx('submission_date')].empty?
