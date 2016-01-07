@@ -97,7 +97,7 @@ if File.exist?(dbFile)
         sps = 'Human'
       end
 
-    pp rr[0..8].join("|")
+   # pp rr[0..8].join("|")
 
       s=Sample.create({gender:genderSource[ rr[hDx('gender')] ],ethnicity:rr[hDx('ethnicity')],cancer_type:rr[hDx('cancer_type')],
           tissue_source:rr[hDx('tissue_source')],case_control:rr[hDx('case_control')],species:sps})

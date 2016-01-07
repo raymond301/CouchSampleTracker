@@ -3,7 +3,7 @@ class CreateFileLocations < ActiveRecord::Migration
     create_table :file_locations do |t|
       t.references :sample, index: true
       t.string :typeCast
-      t.string :location
+      t.text :location
     end
   end
 end
