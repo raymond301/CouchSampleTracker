@@ -1,7 +1,7 @@
 require 'pp'
 
 #dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap2.csv')
-dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap.csv')
+dbFile=Rails.root.join('lib','tasks','SampleTrackingForAll_DATA_2016-01-07_0754.csv')
 
 allStudyGroups=SiteOfOrigin.all.group_by(&:study_group) #.map(&:first)
 genderSource={'1'=>'Male','2'=>'Female','99'=>'Unknown'}
@@ -14,8 +14,6 @@ newRedCapPrjtMap={'project_id___1'=>'simplexocc','project_id___2'=>'demok','proj
                   'project_id___9'=>'pan_rna','project_id___10'=>'pan_ex','project_id___11'=>'pan_cc','project_id___12'=>'coh_ds',
                   'project_id___13'=>'bcfr'}
 
-#pp allStudyGroups
-#exit
 ###### need to fix up plate_barcode in old to fit in either source or submission plate
 
 
@@ -26,7 +24,9 @@ end
 
 
 if File.exist?(dbFile)
+  puts "Starting..."
   File.readlines(dbFile).each_with_index do |ln, idx|
+    #puts idx
     next if ln =~ /^$/
 
     rr=ln.split(/\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
@@ -34,6 +34,8 @@ if File.exist?(dbFile)
       @header = rr
       next
     end
+
+   # puts "here"
 
     ### Skip the Gepar Samples -- I already fixed in newRedCap
     next if rr[7] == "Gepar Quinto"
@@ -65,7 +67,6 @@ if File.exist?(dbFile)
       pp [idx, sampArr]
       pp [SampleAliase.where(:name => rr[1]).first, SampleAliase.where(:name => rr[3]).first]
       puts "\n\n"
-      #exit
       next
     end
 
@@ -208,12 +209,12 @@ if File.exist?(dbFile)
       FreezerLocation.create(sample:s,plate_name:rr[hDx('submission_plate')],plate_type:'Submission Plate',process_step:"Submission",well:rr[hDx('well')] )
     end
 
-    # pp [idx, s, s.site_of_origin]
+     pp [idx, s, s.site_of_origin]
 
 
 
     s.save!
- # break if idx > 10
+    # break if idx > 10
     if idx % 100 == 0
       print " . "
     end
