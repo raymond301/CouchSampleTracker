@@ -209,7 +209,7 @@ if File.exist?(dbFile)
       FreezerLocation.create(sample:s,plate_name:rr[hDx('submission_plate')],plate_type:'Submission Plate',process_step:"Submission",well:rr[hDx('well')] )
     end
 
-     pp [idx, s, s.site_of_origin]
+    # pp [idx, s, s.site_of_origin]
 
 
 
