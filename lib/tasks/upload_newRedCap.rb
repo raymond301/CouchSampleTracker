@@ -1,6 +1,31 @@
 require 'pp'
 
-dbFile=Rails.root.join('lib','tasks','CouchLab_NewRedCap.csv')
+
+
+### Usage: ruby autoRsyncRCF.rb -u <me> -p <my secret> -c <PI_lan_id> -f </NN-primsec>
+#### Help Statement ####
+if ARGV[0]=='-h' || ARGV[0]=='--help'
+  usageStr="Usage: ruby  This script will parse and upload your New Couch RedCap file.\n\n"
+  usageStr+="\t-d <redcap file new db .csv> [required]\n"
+  puts usageStr+"\n"
+  exit 0
+end
+opt = Hash[*ARGV]
+
+
+#### Check Input Params ####
+if !opt.has_key?('-d')
+  puts "Missing RedCap File!"
+  exit 1
+end
+dbFile=opt['-d']
+
+
+
+
+
+
+#dbFile=Rails.root.join('lib','tasks','CouchLab_NewRedCap.csv')
 sampleSource={'1'=>'Thibodeau ID','2'=>'Couch Lab','3'=>'RLIMS','4'=>'External Collaborator'}
 genderSource={'1'=>'Male','2'=>'Female','99'=>'Unknown'}
 keepOriginSites=Hash.new

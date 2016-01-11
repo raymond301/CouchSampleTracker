@@ -21,6 +21,8 @@ Please feel free to use a different markup language if you do not plan to run
  rake db:migrate
  rake db:reset
 
+ ## ALTER TABLE file_locations MODIFY location TEXT;
+
  ## 1st new redcap
  rails runner lib/tasks/upload_newRedCap.rb
  ## 2nd old redcap
