@@ -16,7 +16,6 @@
 /tmp
 
 /.idea
-config.ru
 
 # ignore inital upload files
 /lib/tasks/*.csv
