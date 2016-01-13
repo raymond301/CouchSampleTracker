@@ -2,13 +2,16 @@
     <div class="row">
         <div class="col-xs-2 col-md-1"></div>
         <div class="col-xs-12 col-md-10">
-            <legend> <h1><%=@project.name%></h1> </legend>
+            <legend>
+               <em class="pull-right"><%=link_to 'Project Breakdown Stats', :controller => 'projects', :action => 'count', :id => @project.id %></em>
+                <h1><%=@project.name%></h1>
+                </legend>
 
             <div class="row">
                 <div class="col-md-2"> <strong>Total</strong> : <%= @allSamples.size %> </div>
                 <div class="col-md-2"> <strong>Available</strong> : <%= @allSamples.select{|s| !s.failure }.size %> </div>
             </div>
-            <div class="row">
+            <div class="row" style="background-color: #214450">
                 <div class="col-md-12"> <%= @grpCnts.map { |k, v| k+": "+v.to_s }.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;").html_safe %> </div>
             </div>
 
@@ -20,6 +23,7 @@
                     <th></th>
                     <th>Name</th>
                     <th>Study Group</th>
+                    <th>Case/Control</th>
                     <th>Cancer</th>
                     <th>Species</th>
                     <th>Ethnicity</th>
@@ -39,6 +43,7 @@
                     </td>
                     <td><%= link_to s.primeName.name, :controller => 'samples', :action => 'show', :id => s.id %></td>
                     <td><%= s.site_of_origin.study_group %></td>
+                    <td><%= s.case_control %></td>
                     <td><%= s.cancer_type %></td>
                     <td><%= s.species %></td>
                     <td><%= s.ethnicity %></td>

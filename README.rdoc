@@ -2,23 +2,27 @@
 
 Features to add:
 
-1. Curl submission API
+1. Curl submission API ?
+    1. Get all samples from project
+    2. get all sample aliase & sample from search query
 2. Advanced Query capabilities
     1. Nested Filter - Dynamically (multiple select vs <=>)
     2. Aggragation counting
-3. Export to excel (project sample list, query result)
+3. Export to excel (project sample list, query result, dynamic & static phenotype)
 4. Build single sample edit page
    show/hide project edit, multi-select.
    likely make a partial for each dependancy.
    toggle section add/edit capability - return to reading upon save.
+5. Upload & update from Carriers AccessDB. Read only.
 5. Add a script to read run_info & sample_info to update NGS fields for samples already in db, limit by project to avoid Cross-id issues.
 6. Add sort to samples listing tables, add drop down column filter picker.
 7. Create Transaction table, to track in app changes, tied to specfic save capabilities.
 8. Make save on study group page, all loop save, not just individual records.
 
 Things to Fix:
-    redcap new not uploading Ovarian PDX correctly.
+1. redcap new not uploading Ovarian PDX correctly.
     
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
@@ -28,10 +32,11 @@ How to reset db and app.
  rake db:migrate
  rake db:reset
 
+ ## ALTER TABLE file_locations MODIFY location TEXT;
 
 After Database Seed, runner scripts to build database from RedCap
  ## 1st new redcap
- rails runner lib/tasks/upload_newRedCap.rb
+ rails runner lib/tasks/upload_newRedCap.rb -d <CouchRedcap.csv>
  ## 2nd old redcap
   rails runner lib/tasks/upload_OLD_redcap.rb
   

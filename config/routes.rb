@@ -8,6 +8,8 @@ CouchSampleTracker::Application.routes.draw do
   resources :samples
 
   resources :projects
+  get "projects/count/:id" => 'projects#count'
+
 
   get "dashboard/index"
   post "dashboard/find_sample" => 'dashboard#find_sample'

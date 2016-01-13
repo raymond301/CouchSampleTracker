@@ -1,0 +1,29 @@
+<fieldset>
+    <div class="row">
+        <div class="col-xs-2 col-md-1"></div>
+        <div class="col-xs-12 col-md-10">
+            <legend> <h1><%=@project.name%></h1> </legend>
+
+            <div class="row">
+                <div class="col-md-2"> <strong>Total</strong> : <%= @allSamples.size %> </div>
+                <div class="col-md-2"> <strong>Available</strong> : <%= @allSamples.select{|s| !s.failure }.size %> </div>
+            </div>
+
+            <div class="row">
+                <p>Counts are just based on samples that have not failed.</p>
+                <div class="col-md-2">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <%raise @allSamples.group_by(&:case_control).map(|k,v| [k,v.size]).inspect %>
+                            <th>Case/Control</th>
+                            <th>#</th>
+                        </tr>
+
+
+                </div>
+                <div class="col-md-2"> <strong>Available</strong> : <%= @allSamples.select{|s| !s.failure }.size %> </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

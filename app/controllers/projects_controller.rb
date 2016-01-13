@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, :only=> [:show, :edit, :update, :destroy]
+  before_action :set_project, :only=> [:show, :edit, :update, :destroy, :count]
 
     def show
       @allSamples = @project.samples
@@ -7,6 +7,13 @@ class ProjectsController < ApplicationController
       @grpCnts = Hash[h.map { |k, v| [ SiteOfOrigin.find(k).study_group, v] }]
 
       #raise @grpCnts.inspect
+    end
+
+    def count
+      raise @project.inspect
+      @allSamples = @project.samples
+       ### create model method to return hash to caclulate all the sample field counts
+
     end
 
     # GET /projects/new
