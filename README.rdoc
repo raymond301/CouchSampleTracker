@@ -8,22 +8,34 @@ Features to add:
     2. Aggragation counting
 3. Export to excel (project sample list, query result)
 4. Build single sample edit page
+   show/hide project edit, multi-select.
    likely make a partial for each dependancy.
    toggle section add/edit capability - return to reading upon save.
+5. Add a script to read run_info & sample_info to update NGS fields for samples already in db, limit by project to avoid Cross-id issues.
+6. Add sort to samples listing tables, add drop down column filter picker.
+7. Create Transaction table, to track in app changes, tied to specfic save capabilities.
+8. Make save on study group page, all loop save, not just individual records.
 
-
+Things to Fix:
+    redcap new not uploading Ovarian PDX correctly.
+    
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
-
+How to reset db and app.
  rake db:drop:all
  rake db:migrate
  rake db:reset
 
- ## ALTER TABLE file_locations MODIFY location TEXT;
 
+After Database Seed, runner scripts to build database from RedCap
  ## 1st new redcap
  rails runner lib/tasks/upload_newRedCap.rb
  ## 2nd old redcap
   rails runner lib/tasks/upload_OLD_redcap.rb
+  
+  
+Additional SQL Helper
+  ALTER TABLE file_locations MODIFY location TEXT;
+
