@@ -3,26 +3,35 @@
         <div class="col-xs-2 col-md-1"></div>
         <div class="col-xs-12 col-md-10">
             <legend> <h1><%=@project.name%></h1> </legend>
-
+            <p class="pull-right" style="font-size: 0.7em">* Counts are just based on samples that have not failed</p>
             <div class="row">
-                <div class="col-md-2"> <strong>Total</strong> : <%= @allSamples.size %> </div>
-                <div class="col-md-2"> <strong>Available</strong> : <%= @allSamples.select{|s| !s.failure }.size %> </div>
+                <div class="col-md-4"> <strong>Total</strong> : <%= @project.samples.select{|s| !s.failure }.size %> Available Samples</div>
+                </br>
             </div>
 
             <div class="row">
-                <p>Counts are just based on samples that have not failed.</p>
-                <div class="col-md-2">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <%raise @allSamples.group_by(&:case_control).map(|k,v| [k,v.size]).inspect %>
-                            <th>Case/Control</th>
-                            <th>#</th>
+                <% @allStats.each do |title, map| %>
+                <div class="col-md-3">
+                    <table class="table table-striped" style="padding: 4px">
+                        <thead style="text-align: center; font-size: 1.3em;">
+                        <tr style="color: #4bdfdc">
+                            <th><%= title %></th>
+                            <th>Count</th>
                         </tr>
-
-
+                        </thead>
+                        <tbody>
+                            <% map.each do |ele| %>
+                                <tr>
+                                    <td><%=ele[0]%></td>
+                                    <td><%=ele[1]%></td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-2"> <strong>Available</strong> : <%= @allSamples.select{|s| !s.failure }.size %> </div>
+                <% end %>
+
+
             </div>
         </div>
     </div>

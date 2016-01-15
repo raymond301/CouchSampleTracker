@@ -10,9 +10,10 @@ class ProjectsController < ApplicationController
     end
 
     def count
-      raise @project.inspect
-      @allSamples = @project.samples
-       ### create model method to return hash to caclulate all the sample field counts
+      @allStats = @project.aggregateStatistics
+     # raise @allStats.inspect
+
+      ### create model method to return hash to caclulate all the sample field counts
 
     end
 
