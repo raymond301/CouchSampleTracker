@@ -7,7 +7,7 @@ Features to add:
     2. get all sample aliase & sample from search query
 2. Advanced Query capabilities
     1. Nested Filter - Dynamically (multiple select vs <=>)
-    2. Aggragation counting
+    ~~2. Aggragation counting~~
 3. Export to excel (project sample list, query result, dynamic & static phenotype)
 4. Build single sample edit page
    show/hide project edit, multi-select.
@@ -18,6 +18,8 @@ Features to add:
 6. Add sort to samples listing tables, add drop down column filter picker.
 7. Create Transaction table, to track in app changes, tied to specfic save capabilities.
 8. Make save on study group page, all loop save, not just individual records.
+9  Add link from sample page - to add new validation.
+10 Add .ico
 
 Things to Fix:
 1. redcap new not uploading Ovarian PDX correctly.

@@ -7,6 +7,10 @@
         <div class="col-xs-12 col-md-10">
             <legend>Samples/Aliases</legend>
 
+            <% if @samps.empty? %>
+                   <h3 style="color: darkred"> NO SAMPLES FOUND! </h3>
+            <% end %>
+
             <table class="table table-striped">
                 <thead>
                 <tr>

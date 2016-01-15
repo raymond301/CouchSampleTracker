@@ -108,11 +108,6 @@ if File.exist?(dbFile)
 
     ### submission plate and ngs bic data
     sm = MayoSubmission.create(sample:s)
-   # if ! rr[hDx('submission_plate')].empty? then sm.plate = rr[hDx('submission_plate')] end
-   # if ! rr[hDx('submission_well')].empty? then sm.well = rr[hDx('submission_well')] end
-   # if ! rr[hDx('submission_vol')].empty? then sm.volume = rr[hDx('submission_vol')].to_f end
-   # if ! rr[hDx('submission_conc')].empty? then sm.concentration = rr[hDx('submission_conc')].to_f end
-   # if ! rr[hDx('submission_date')].empty? then sm.created_at = Date.parse( rr[hDx('submission_date')] ) end
     if ! rr[hDx('lane_num')].empty? then sm.lane_number = rr[hDx('lane_num')] end
     if ! rr[hDx('sequence_index')].empty? then sm.sequence_index = rr[hDx('sequence_index')] end
     if ! rr[hDx('flowcell')].empty? then sm.flowcell = rr[hDx('flowcell')] end

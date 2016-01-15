@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
   def find_sample
     @q=params['query']
     @samps=SampleAliase.allSamplesInQuery( params['query'] )
-    @samps[0].primeName
+    @samps[0].primeName rescue ''
   end
 
   def search_sample

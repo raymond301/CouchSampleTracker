@@ -1,7 +1,26 @@
 require 'pp'
 
+### Usage: ruby autoRsyncRCF.rb -u <me> -p <my secret> -c <PI_lan_id> -f </NN-primsec>
+#### Help Statement ####
+if ARGV[0]=='-h' || ARGV[0]=='--help'
+  usageStr="Usage: ruby  This script will parse and upload your New Couch RedCap file.\n\n"
+  usageStr+="\t-d <redcap file new db .csv> [required]\n"
+  puts usageStr+"\n"
+  exit 0
+end
+opt = Hash[*ARGV]
+
+
+#### Check Input Params ####
+if !opt.has_key?('-d')
+  puts "Missing RedCap File!"
+  exit 1
+end
+dbFile=opt['-d']
+
+
 #dbFile=Rails.root.join('lib','tasks','CouchLab_OldRedCap2.csv')
-dbFile=Rails.root.join('lib','tasks','SampleTrackingForAll_DATA_2016-01-07_0754.csv')
+#dbFile=Rails.root.join('lib','tasks','SampleTrackingForAll_DATA_2016-01-07_0754.csv')
 
 allStudyGroups=SiteOfOrigin.all.group_by(&:study_group) #.map(&:first)
 genderSource={'1'=>'Male','2'=>'Female','99'=>'Unknown'}
@@ -99,7 +118,7 @@ if File.exist?(dbFile)
 
    # pp rr[0..8].join("|")
 
-      s=Sample.create({gender:genderSource[ rr[hDx('gender')] ],ethnicity:rr[hDx('ethnicity')],cancer_type:rr[hDx('cancer_type')],
+      s=Sample.create({gender: genderSource[ rr[hDx('gender')] ],ethnicity:rr[hDx('ethnicity')],cancer_type:rr[hDx('cancer_type')],
           tissue_source:rr[hDx('tissue_source')],case_control:rr[hDx('case_control')],species:sps})
 
 

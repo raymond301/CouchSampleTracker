@@ -17,6 +17,8 @@ class CreateValidations < ActiveRecord::Migration
       t.string :primer_reverse
       t.integer :pcr_size
       t.float :annealing_temp
+      t.string :lab_call
+      t.string :validated_by
       t.string :notes
       t.timestamps
     end

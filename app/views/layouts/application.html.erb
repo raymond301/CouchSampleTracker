@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BIC Assist</title>
+    <title>BIC Assistant</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -37,6 +37,10 @@
                     <li class="divider"></li>
                     <li>
                         <%#=link_to "Upload CARRIERS", :controller=>'carrier', :action=>'new' %>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <%#=link_to "GGPS Configs", :controller=>'carrier', :action=>'ggps_config_new' %>
                     </li>
                 </ul>
             </li>
