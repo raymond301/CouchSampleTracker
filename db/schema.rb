@@ -29,20 +29,12 @@ ActiveRecord::Schema.define(version: 20151122222532) do
     t.datetime "updated_at"
   end
 
-  create_table "demographic_glob_headers", force: true do |t|
-    t.integer "sample_id"
-    t.text    "delim_text"
-  end
-
-  add_index "demographic_glob_headers", ["sample_id"], name: "index_demographic_glob_headers_on_sample_id"
-
   create_table "demographic_globs", force: true do |t|
     t.integer "sample_id"
-    t.integer "demographic_glob_header_id"
-    t.text    "delim_text"
+    t.binary  "delim_header"
+    t.binary  "delim_text"
   end
 
-  add_index "demographic_globs", ["demographic_glob_header_id"], name: "index_demographic_globs_on_demographic_glob_header_id"
   add_index "demographic_globs", ["sample_id"], name: "index_demographic_globs_on_sample_id"
 
   create_table "demographic_informations", force: true do |t|
@@ -56,7 +48,7 @@ ActiveRecord::Schema.define(version: 20151122222532) do
   create_table "file_locations", force: true do |t|
     t.integer "sample_id"
     t.string  "typeCast"
-    t.string  "location"
+    t.text    "location"
   end
 
   add_index "file_locations", ["sample_id"], name: "index_file_locations_on_sample_id"
@@ -175,6 +167,8 @@ ActiveRecord::Schema.define(version: 20151122222532) do
     t.string   "primer_reverse"
     t.integer  "pcr_size"
     t.float    "annealing_temp"
+    t.string   "lab_call"
+    t.string   "validated_by"
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"

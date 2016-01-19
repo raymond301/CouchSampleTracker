@@ -50,6 +50,7 @@ aliqoutTrack=Hash.new
 keepable=[0,1]
 
 if File.exist?(dbFile)
+  puts "\nStarting New Redcap..."
   File.readlines(dbFile).each_with_index do |ln, idx|
     rr=ln.split(/\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
 

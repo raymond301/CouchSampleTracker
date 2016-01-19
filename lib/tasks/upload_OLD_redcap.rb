@@ -43,7 +43,7 @@ end
 
 
 if File.exist?(dbFile)
-  puts "Starting..."
+  puts "\nStarting Old Redcap..."
   File.readlines(dbFile).each_with_index do |ln, idx|
     #puts idx
     next if ln =~ /^$/
@@ -54,7 +54,12 @@ if File.exist?(dbFile)
       next
     end
 
-   # puts "here"
+    if idx % 100 == 0
+      print " . "
+    end
+    if idx % 1000 == 0
+      puts " * "
+    end
 
     ### Skip the Gepar Samples -- I already fixed in newRedCap
     next if rr[7] == "Gepar Quinto"
@@ -71,6 +76,7 @@ if File.exist?(dbFile)
           missingAlias[i] = true
         elsif rr[i] =~ /^Mayo_TN_CC_/
           missingAlias[i] = true
+          sampArr[i] = nil
         else
           missingAlias[i] = false
           sampArr[i] = ally.sample.id
@@ -234,12 +240,6 @@ if File.exist?(dbFile)
 
     s.save!
     # break if idx > 10
-    if idx % 100 == 0
-      print " . "
-    end
-    if idx % 1000 == 0
-      puts " * "
-    end
 
   end
 else

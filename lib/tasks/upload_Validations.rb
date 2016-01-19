@@ -30,7 +30,6 @@ end
 if File.exist?(dbFile)
 #  puts "Starting..."
   File.readlines(dbFile).each_with_index do |ln, idx|
-    puts idx
     next if ln =~ /^$/
 
     rr=ln.split(/\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
@@ -39,17 +38,28 @@ if File.exist?(dbFile)
       next
     end
 
-    ally=SampleAliase.where(:name => rr[hDx('sample_id')] )
+    if rr[hDx('sample_id')] =~ /;/
+      rr[hDx('sample_id')] = rr[hDx('sample_id')].split(/;/).first
+    end
 
-    #pp ally
+    ally=SampleAliase.where(:name => rr[hDx('sample_id')] )
+    if ally.size == 0
+      ally=SampleAliase.where(:name => rr[hDx('sample_id')].gsub!(/^s_/,'') )
+    end
 
 
     ### Just one sample name, exact match - must be this one
     if ally.size == 1
       mySample = ally.first.sample
+    elsif ally.map{|a| a.sample_id}.uniq.compact.size == 1  ## all aliases map back to same sample
+      mySample = ally.first.sample
+    elsif ally.size == 0
+      puts "NO MATCHING SAMPLE [#{rr[hDx('sample_id')]}]"
+      puts rr.compact.join(" | ")
+      next
     else
       puts "MULTIPLE ALIASES"
-      pp  ally
+      pp ally
       exit
     end
 
@@ -84,17 +94,11 @@ if File.exist?(dbFile)
 
 
     v.save!
-    pp [mySample,v]
+    #pp [ally,mySample,v]
+    #pp [ally,v]
 
     #puts "\n\n"
     #break if idx > 3
-    if idx % 10 == 0
-      print " . "
-    end
-    if idx % 100 == 0
-      puts " * "
-    end
-
 
   end
 else
