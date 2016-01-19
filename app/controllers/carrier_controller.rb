@@ -19,4 +19,13 @@ class CarrierController < ApplicationController
 
   end
 
+  def ggps_config_new
+    @project = Project.all.map{|p| [p.name,p.id]}
+  end
+
+  def ggps_config_create
+
+  end
+
+
 end

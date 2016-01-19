@@ -23,6 +23,9 @@ CouchSampleTracker::Application.routes.draw do
   get "carrier/notifications"
   post "carrier/create_source" => 'carrier#create_source'
   post "carrier/create_submission" => 'carrier#create_submission'
+  get "carrier/ggps_config_new"
+  post "carrier/ggps_config_create" => 'carrier#ggps_config_create'
+
 
 
 
