@@ -21,14 +21,14 @@ class Project < ActiveRecord::Base
     returnableMap['NGS_Batches'] = ngs.group_by(&:ngs_protal_batch).map{|k,v| [k,v.count]}
     returnableMap['NGS_Flowcells'] = ngs.group_by(&:flowcell).map{|k,v| [k,v.count]}
 
-
-    # raise samples.group_by(&:case_control).map{|k,v| [k,v.count]}.inspect
-
     return returnableMap
+  end
 
+
+  def caseStats
+    samples = self.samples.select{|s| !s.failure }
+    return Hash[* samples.group_by(&:case_control).map{|k,v| [k,v.count]}.flatten ]
   end
 
 end
 
-
-#t.references :site_of_origin

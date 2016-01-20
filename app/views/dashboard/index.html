@@ -39,7 +39,9 @@
                 <tr>
                 <td><%=link_to "#{pjt.id}:  #{pjt.name}", pjt%></td>
                 <td><%= pjt.samples.size%> <em>(<%= pjt.total %>)</em></td>
-                <td><%= pjt.cases %> / <%= pjt.cntls %></td>
+                <!--<td><%#= pjt.cases %> / <%#= pjt.cntls %></td>-->
+                    <% csct = pjt.caseStats %>
+                <td><%= csct["Case"] %> / <%= csct["Control"] %></td>
                 <td><%= pjt.purpose %></td>
                     <td></td>
                 </tr>

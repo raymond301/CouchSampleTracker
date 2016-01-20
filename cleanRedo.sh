@@ -11,3 +11,6 @@ rails runner lib/tasks/upload_OLD_redcap.rb -d lib/tasks/SampleTrackingForAll_DA
 echo "Uploading Variant Validation RedCap Database"
 rails runner lib/tasks/upload_Validations.rb -d lib/tasks/VariantValidationsFo_DATA_2016-01-19_1432.csv
 
+echo "Renormalize the Database"
+rails runner lib/tasks/normalizer.rb
+
