@@ -6,6 +6,7 @@ class Sample < ActiveRecord::Base
   has_many :file_locations
   has_many :freezer_locations
   has_many :demographic_informations
+  has_many :validations
 
 
   def allNameObjts

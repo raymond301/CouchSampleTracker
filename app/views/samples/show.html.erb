@@ -154,6 +154,54 @@
     </table>
     </p>
 
+
+    <p>
+    <h3>Validation Information : </h3>
+    <table class="table table-striped">
+        <tr>
+            <th>Valid?</th>
+           <!-- <th>Genome</th> -->
+            <th>Chr:Pos-Ref/Alt</th>
+            <th>HGVS</th>
+            <th>Gene</th>
+            <th>Transcript</th>
+            <th>exon</th>
+            <th>primer_forward</th>
+            <th>primer_reverse</th>
+            <th>pcr_size</th>
+            <th>annealing_temp</th>
+            <th>notes</th>
+        </tr>
+        <% @sample.validations.each do |t| %>
+        <tr>
+            <td>
+                <% if t.confirmation %>
+                    <%= image_tag "good.png"%>
+                <% else %>
+                    <%= image_tag "bad.png"%>
+                <% end %>
+            </td>
+            <!--<td> <%#= t.reference_build %></td> -->
+            <td> <%= "#{t.chr}:#{t.pos}-#{t.ref}/#{t.alt}" %></td>
+            <td>
+                <%= t.hgvs_c %>
+                <% if !t.hgvs_p.empty?%>
+                    [<%= t.hgvs_p %>]
+                <%end%>
+            </td>
+            <td> <%= t.gene %></td>
+            <td> <%= t.transcript %></td>
+            <td> <%= t.exon %></td>
+            <td> <%= t.primer_forward %></td>
+            <td> <%= t.primer_reverse %></td>
+            <td> <%= t.pcr_size %></td>
+            <td> <%= t.annealing_temp %></td>
+            <td> <%= t.notes %></td>
+        </tr>
+        <% end %>
+    </table>
+    </p>
+
     <%#raise @sample..inspect%>
 
 

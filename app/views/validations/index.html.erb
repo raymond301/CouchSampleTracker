@@ -1,6 +1,6 @@
-<h1>Listing validations</h1>
+<h1>List All Validations</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Sample</th>
@@ -22,14 +22,14 @@
       <th>Notes</th>
       <th></th>
       <th></th>
-      <th></th>
+      <!--<th></th>-->
     </tr>
   </thead>
 
   <tbody>
     <% @validations.each do |validation| %>
       <tr>
-        <td><%= validation.sample %></td>
+        <td><%=link_to validation.sample.primeName.name, validation.sample %></td>
         <td><%= validation.confirmation %></td>
         <td><%= validation.reference_build %></td>
         <td><%= validation.chr %></td>
@@ -48,7 +48,7 @@
         <td><%= validation.notes %></td>
         <td><%= link_to 'Show', validation %></td>
         <td><%= link_to 'Edit', edit_validation_path(validation) %></td>
-        <td><%= link_to 'Destroy', validation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%#= link_to 'Destroy', validation, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
