@@ -13,7 +13,6 @@ Sample.all.each do |s|
   if ! s.species.blank? then s.species.downcase.capitalize! end
   if ! s.tissue_source.blank? then s.tissue_source.downcase.capitalize! end
 
-  br
   if s.cancer_type == "BR"
     s.cancer_type = "Breast"
   elsif s.cancer_type == "br"
