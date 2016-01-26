@@ -185,7 +185,7 @@
             <td> <%= "#{t.chr}:#{t.pos}-#{t.ref}/#{t.alt}" %></td>
             <td>
                 <%= t.hgvs_c %>
-                <% if !t.hgvs_p.empty?%>
+                <% if !t.hgvs_p.blank?%>
                     [<%= t.hgvs_p %>]
                 <%end%>
             </td>

@@ -5,7 +5,19 @@
     <div class="row">
         <div class="col-xs-2 col-md-1"></div>
         <div class="col-xs-12 col-md-10">
-            <legend>Samples/Aliases</legend>
+            <legend>Samples/Aliases
+                <%= form_tag(dashboard_find_sample_path, :class=>'form-horizontal pull-right') do %>
+                <div class="form-group" >
+                    <div class="col-md-3 pull-right">
+                        <%= submit_tag "Sample", :class=>'btn btn-sm btn-info'%>
+                    </div>
+                    <div class="col-md-7 input-sm pull-right">
+                        <%= text_field_tag 'query'%>
+                    </div>
+                </div>
+                <% end %>
+
+            </legend>
 
             <% if @samps.empty? %>
                    <h3 style="color: darkred"> NO SAMPLES FOUND! </h3>

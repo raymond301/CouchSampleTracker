@@ -88,10 +88,9 @@ if File.exist?(dbFile)
 
     sampList = sampArr.uniq.compact
     if sampList.length > 1
-      puts "MULTIPLE SAMPLES ON 1 ROW ISSUE!!!!"
-      pp [idx, sampArr]
-      pp [SampleAliase.where(:name => rr[1]).first, SampleAliase.where(:name => rr[3]).first]
-      puts "\n\n"
+      logger.info "MULTIPLE SAMPLES ON 1 ROW ISSUE!!!!"
+      logger.info [idx, sampArr]
+      logger.info [SampleAliase.where(:name => rr[1]).first, SampleAliase.where(:name => rr[3]).first]
       next
     end
 
@@ -212,7 +211,10 @@ if File.exist?(dbFile)
     end
 
 
-
+    if rr[hDx('project_id___2')] == "1"
+      print "I am now debugging DEMOK samples -- col 42 > 45"
+      puts rr
+    end
 
     # ### submission plate and ngs bic data
     ngsStr = rr[42..45].join('')

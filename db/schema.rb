@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151122222532) do
+ActiveRecord::Schema.define(version: 20160126220526) do
 
   create_table "bug_traxes", force: true do |t|
     t.string   "submitter"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20151122222532) do
   end
 
   create_table "carriers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "change_trackers", force: true do |t|
+    t.integer  "changer_id"
+    t.string   "changer_type"
+    t.string   "action"
+    t.string   "title"
+    t.text     "old_value"
+    t.text     "new_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

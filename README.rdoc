@@ -13,10 +13,11 @@ Features to add:
    show/hide project edit, multi-select.
    likely make a partial for each dependancy.
    toggle section add/edit capability - return to reading upon save.
-5. Upload & update from Carriers AccessDB. Read only.
+5. ~~Upload & update from Carriers AccessDB. No Longer Applys.~~
 5. Add a script to read run_info & sample_info to update NGS fields for samples already in db, limit by project to avoid Cross-id issues.
 6. Add sort to samples listing tables, add drop down column filter picker.
 7. Create Transaction table, to track in app changes, tied to specfic save capabilities.
+    Add change tracking to GUI interfaces [study_groups, ]
 8. Make save on study group page, all loop save, not just individual records.
 9  Add link from sample page - to add new validation.
 10 Add .ico
