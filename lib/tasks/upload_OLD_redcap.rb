@@ -48,7 +48,7 @@ if File.exist?(dbFile)
     #puts idx
     next if ln =~ /^$/
 
-    rr=ln.split(/\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
+    rr=ln.split(/\"\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
     if idx == 0
       @header = rr
       next
