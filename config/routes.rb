@@ -6,6 +6,8 @@ CouchSampleTracker::Application.routes.draw do
   resources :validations
 
   resources :samples
+  get "samples/multi_edit"
+  post "samples/multi_update" => 'samples#multi_update'
 
   resources :projects
   get "projects/count/:id" => 'projects#count'

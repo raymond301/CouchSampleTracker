@@ -1,45 +1,66 @@
 <%= form_for(@sample) do |f| %>
-  <% if @sample.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
+    <% if @sample.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@sample.errors.count, "error") %> prohibited this sample from being saved:</h2>
 
-      <ul>
-      <% @sample.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+            <ul>
+                <% @sample.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="field">
+                <%= f.label :gender %><br>
+                <%= f.text_field :gender %>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="field">
+                <%= f.label :ethnicity %><br>
+                <%= f.text_field :ethnicity %>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="field">
+                <%= f.label :cancer_type %><br>
+                <%= f.text_field :cancer_type %>
+            </div>
+        </div>
     </div>
-  <% end %>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="field">
+                <%= f.label :tissue_source %><br>
+                <%= f.text_field :tissue_source %>
+            </div>
+        </div>
+        <div class="col-md-4">
 
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :ethnicity %><br>
-    <%= f.text_field :ethnicity %>
-  </div>
-  <div class="field">
-    <%= f.label :cancer_type %><br>
-    <%= f.text_field :cancer_type %>
-  </div>
-  <div class="field">
-    <%= f.label :tissue_source %><br>
-    <%= f.text_field :tissue_source %>
-  </div>
-  <div class="field">
-    <%= f.label :case_control %><br>
-    <%= f.text_field :case_control %>
-  </div>
-  <div class="field">
-    <%= f.label :species %><br>
-    <%= f.text_field :species %>
-  </div>
-  <div class="field">
-    <%= f.label :aliquot_from %><br>
-    <%= f.text_field :aliquot_from %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+            <div class="field">
+                <%= f.label :case_control %><br>
+                <%= f.text_field :case_control %>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="field">
+                <%= f.label :species %><br>
+                <%= f.text_field :species %>
+            </div>
+        </div>
+    </div>
+
+    <!--  <div class="field">
+    <%#= f.label :aliquot_from %><br>
+    <%#= f.text_field :aliquot_from %>
+  </div>-->
+    <div class="actions">
+        <%= f.submit %>
+    </div>
 <% end %>

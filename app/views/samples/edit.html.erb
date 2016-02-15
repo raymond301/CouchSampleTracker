@@ -1,6 +1,10 @@
-<h1>Editing sample</h1>
+
+<div class="container">
+
+<h1>Editing <%= @sample.primeName.name %></h1>
 
 <%= render 'form' %>
 
+</div>
 <%= link_to 'Show', @sample %> |
 <%= link_to 'Back', samples_path %>

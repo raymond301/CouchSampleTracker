@@ -70,6 +70,7 @@ File.readlines(dbFile).each_with_index do |ln, idx|
 
   pp [idx, rr[0],ally,s]
   keepSampleObjectPerRow = Hash.new
+
   ### get single set of objects
   @ObjectHeader.uniq.each do |o|
     if o == 'Sample'

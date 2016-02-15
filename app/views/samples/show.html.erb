@@ -2,7 +2,8 @@
 <div class="row">
 
 <p id="notice"><%= notice %></p>
-<h1>Sample: <%= @sample.primeName.name %> </h1>
+    <%= link_to 'Edit', edit_sample_path(@sample) , :class => "pull-right"%>
+    <h1>Sample: <%= @sample.primeName.name %></h1>
     <em>ID Type: [<%= @sample.primeName.typeCast %>]</em></br></br>
 
     <p>

@@ -61,6 +61,27 @@ class SamplesController < ApplicationController
     end
   end
 
+
+  # GET /samples/1/edit
+  def multi_edit
+    @sample = Sample.find(params[:id])
+
+  end
+
+  def multi_update
+    respond_to do |format|
+
+      if @sample.update(sample_params)
+        format.html { redirect_to @sample, notice: 'Sample was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @sample.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sample
