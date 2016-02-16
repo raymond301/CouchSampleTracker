@@ -21,3 +21,4 @@
 /lib/tasks/*.csv
 /lib/tasks/*.xlsx
 /lib/tasks/*.txt
+/lib/tasks/data_source/*
