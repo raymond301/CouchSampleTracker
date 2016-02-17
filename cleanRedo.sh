@@ -10,6 +10,8 @@ echo "Uploading Old RedCap Database"
 rails runner lib/tasks/upload_OLD_redcap.rb -d lib/tasks/SampleTrackingForAll_DATA_2016-01-15_OLDREDCAP.csv
 echo "Uploading Variant Validation RedCap Database"
 rails runner lib/tasks/upload_Validations.rb -d lib/tasks/VariantValidationsFo_DATA_2016-01-19_1432.csv
+echo "Uploading Paths from Steve"
+rails runner lib/tasks/fileBamListUpload.rb -i lib/tasks/data_source/BAMFILES.list
 
 echo "Renormalize the Database"
 rails runner lib/tasks/normalizer.rb
