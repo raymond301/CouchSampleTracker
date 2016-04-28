@@ -18,9 +18,12 @@ nohup.out
 /tmp
 
 /.idea
+*.iml
 
 # ignore inital upload files
 /lib/tasks/*.csv
 /lib/tasks/*.xlsx
 /lib/tasks/*.txt
 /lib/tasks/data_source/*
+
+/lib/assets/data/

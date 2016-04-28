@@ -1,4 +1,5 @@
 require 'pp'
+require 'csv'
 
 ### Usage: ruby autoRsyncRCF.rb -u <me> -p <my secret> -c <PI_lan_id> -f </NN-primsec>
 #### Help Statement ####
@@ -41,16 +42,22 @@ def hDx (str)
   return @header.index(str)
 end
 
+output = File.open("upload2redcap_#{Time.new().strftime("%m-%d-%Y")}.tsv", "w")
+
 
 if File.exist?(dbFile)
   puts "\nStarting Old Redcap..."
-  File.readlines(dbFile).each_with_index do |ln, idx|
-    #puts idx
-    next if ln =~ /^$/
+ # File.readlines(dbFile).each_with_index do |ln, idx|
+  CSV.foreach(dbFile).each_with_index do |rr, idx|
 
-    rr=ln.split(/\"\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
+    #puts idx
+    #next if ln =~ /^$/
+
+    #rr=ln.split(/\"*\,/).map{|m| m.sub(/^\"/,'').sub(/\"$/,'') }
     if idx == 0
       @header = rr
+      #pp @header
+      output.puts rr.join("\t")
       next
     end
 
@@ -88,9 +95,9 @@ if File.exist?(dbFile)
 
     sampList = sampArr.uniq.compact
     if sampList.length > 1
-      logger.info "MULTIPLE SAMPLES ON 1 ROW ISSUE!!!!"
-      logger.info [idx, sampArr]
-      logger.info [SampleAliase.where(:name => rr[1]).first, SampleAliase.where(:name => rr[3]).first]
+      Rails.logger.info "MULTIPLE SAMPLES ON 1 ROW ISSUE!!!!"
+      Rails.logger.info [idx, sampArr]
+      Rails.logger.info [SampleAliase.where(:name => rr[1]).first, SampleAliase.where(:name => rr[3]).first]
       next
     end
 
@@ -101,6 +108,7 @@ if File.exist?(dbFile)
       if ! s.nil?
         for i in 1..6
           if missingAlias[i]
+            #puts "#{i} - #{@header[i]}"
             SampleAliase.create({sample:s,name:rr[i],typeCast:@header[i].camelize })
           end
         end
@@ -123,11 +131,13 @@ if File.exist?(dbFile)
 
    # pp rr[0..8].join("|")
 
+
       s=Sample.create({gender: genderSource[ rr[hDx('gender')] ],ethnicity:rr[hDx('ethnicity')],cancer_type:rr[hDx('cancer_type')],
           tissue_source:rr[hDx('tissue_source')],case_control:rr[hDx('case_control')],species:sps})
+    output.puts rr.join("\t")
 
 
-     ## Find or Create a study group / site of origin
+    ## Find or Create a study group / site of origin
      stdgrp = rr[hDx('study_group')]
     if allStudyGroups.has_key?( stdgrp )
      if allStudyGroups[stdgrp].size == 1
